@@ -11,13 +11,11 @@
 		551562702BC95BF7003F371E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515626F2BC95BF7003F371E /* ContentView.swift */; };
 		551562722BC95BF8003F371E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551562712BC95BF8003F371E /* Assets.xcassets */; };
 		551562752BC95BF8003F371E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551562742BC95BF8003F371E /* Preview Assets.xcassets */; };
-		5515627D2BC95EB6003F371E /* dwightschedule_screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515627C2BC95EB6003F371E /* dwightschedule_screen.swift */; };
-		551562802BC95F83003F371E /* schedules_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515627F2BC95F83003F371E /* schedules_model.swift */; };
-		551562822BC96045003F371E /* class_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562812BC96045003F371E /* class_model.swift */; };
-		551562842BC9608E003F371E /* dwight_schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562832BC9608E003F371E /* dwight_schedules.swift */; };
-		551562872BC962E9003F371E /* format_date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562862BC962E9003F371E /* format_date.swift */; };
-		551562892BC965C2003F371E /* get_cycle_date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562882BC965C2003F371E /* get_cycle_date.swift */; };
-		5515628B2BC966A0003F371E /* schedules_model2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515628A2BC966A0003F371E /* schedules_model2.swift */; };
+		5515627D2BC95EB6003F371E /* DwightScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515627C2BC95EB6003F371E /* DwightScheduleView.swift */; };
+		551562802BC95F83003F371E /* BModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515627F2BC95F83003F371E /* BModel.swift */; };
+		551562842BC9608E003F371E /* DwightScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562832BC9608E003F371E /* DwightScheduleModel.swift */; };
+		551562872BC962E9003F371E /* FormatDateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562862BC962E9003F371E /* FormatDateUtil.swift */; };
+		551562892BC965C2003F371E /* GetCycleUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562882BC965C2003F371E /* GetCycleUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,13 +24,11 @@
 		5515626F2BC95BF7003F371E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		551562712BC95BF8003F371E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551562742BC95BF8003F371E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5515627C2BC95EB6003F371E /* dwightschedule_screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dwightschedule_screen.swift; sourceTree = "<group>"; };
-		5515627F2BC95F83003F371E /* schedules_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schedules_model.swift; sourceTree = "<group>"; };
-		551562812BC96045003F371E /* class_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = class_model.swift; sourceTree = "<group>"; };
-		551562832BC9608E003F371E /* dwight_schedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dwight_schedules.swift; sourceTree = "<group>"; };
-		551562862BC962E9003F371E /* format_date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = format_date.swift; sourceTree = "<group>"; };
-		551562882BC965C2003F371E /* get_cycle_date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_cycle_date.swift; sourceTree = "<group>"; };
-		5515628A2BC966A0003F371E /* schedules_model2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schedules_model2.swift; sourceTree = "<group>"; };
+		5515627C2BC95EB6003F371E /* DwightScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwightScheduleView.swift; sourceTree = "<group>"; };
+		5515627F2BC95F83003F371E /* BModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BModel.swift; sourceTree = "<group>"; };
+		551562832BC9608E003F371E /* DwightScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwightScheduleModel.swift; sourceTree = "<group>"; };
+		551562862BC962E9003F371E /* FormatDateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateUtil.swift; sourceTree = "<group>"; };
+		551562882BC965C2003F371E /* GetCycleUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCycleUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +64,14 @@
 				551562852BC962C1003F371E /* utils */,
 				5515627E2BC95F6E003F371E /* models */,
 				5515627B2BC95E94003F371E /* screens */,
-				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
-				5515627C2BC95EB6003F371E /* dwightschedule_screen.swift */,
 				5515626F2BC95BF7003F371E /* ContentView.swift */,
+				5515627C2BC95EB6003F371E /* DwightScheduleView.swift */,
+				5515627F2BC95F83003F371E /* BModel.swift */,
+				551562862BC962E9003F371E /* FormatDateUtil.swift */,
+				551562882BC965C2003F371E /* GetCycleUtil.swift */,
+				551562832BC9608E003F371E /* DwightScheduleModel.swift */,
 				551562712BC95BF8003F371E /* Assets.xcassets */,
 				551562732BC95BF8003F371E /* Preview Content */,
-				551562812BC96045003F371E /* class_model.swift */,
 			);
 			path = Schola_1;
 			sourceTree = "<group>";
@@ -89,6 +87,7 @@
 		5515627B2BC95E94003F371E /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -96,9 +95,6 @@
 		5515627E2BC95F6E003F371E /* models */ = {
 			isa = PBXGroup;
 			children = (
-				5515627F2BC95F83003F371E /* schedules_model.swift */,
-				551562832BC9608E003F371E /* dwight_schedules.swift */,
-				5515628A2BC966A0003F371E /* schedules_model2.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -106,8 +102,6 @@
 		551562852BC962C1003F371E /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				551562862BC962E9003F371E /* format_date.swift */,
-				551562882BC965C2003F371E /* get_cycle_date.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -182,15 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				551562802BC95F83003F371E /* schedules_model.swift in Sources */,
-				5515628B2BC966A0003F371E /* schedules_model2.swift in Sources */,
+				551562802BC95F83003F371E /* BModel.swift in Sources */,
 				551562702BC95BF7003F371E /* ContentView.swift in Sources */,
-				551562872BC962E9003F371E /* format_date.swift in Sources */,
-				551562892BC965C2003F371E /* get_cycle_date.swift in Sources */,
-				551562822BC96045003F371E /* class_model.swift in Sources */,
-				5515627D2BC95EB6003F371E /* dwightschedule_screen.swift in Sources */,
+				551562872BC962E9003F371E /* FormatDateUtil.swift in Sources */,
+				551562892BC965C2003F371E /* GetCycleUtil.swift in Sources */,
+				5515627D2BC95EB6003F371E /* DwightScheduleView.swift in Sources */,
 				5515626E2BC95BF7003F371E /* Schola_1App.swift in Sources */,
-				551562842BC9608E003F371E /* dwight_schedules.swift in Sources */,
+				551562842BC9608E003F371E /* DwightScheduleModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
