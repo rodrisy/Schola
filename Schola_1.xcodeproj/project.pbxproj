@@ -16,6 +16,7 @@
 		551562842BC9608E003F371E /* DwightScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562832BC9608E003F371E /* DwightScheduleModel.swift */; };
 		551562872BC962E9003F371E /* FormatDateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562862BC962E9003F371E /* FormatDateUtil.swift */; };
 		551562892BC965C2003F371E /* GetCycleUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562882BC965C2003F371E /* GetCycleUtil.swift */; };
+		55E01BE02BD184EB000751FF /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E01BDF2BD184EB000751FF /* ContentView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		551562832BC9608E003F371E /* DwightScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwightScheduleModel.swift; sourceTree = "<group>"; };
 		551562862BC962E9003F371E /* FormatDateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateUtil.swift; sourceTree = "<group>"; };
 		551562882BC965C2003F371E /* GetCycleUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCycleUtil.swift; sourceTree = "<group>"; };
+		55E01BDF2BD184EB000751FF /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +67,13 @@
 				5515627E2BC95F6E003F371E /* models */,
 				5515627B2BC95E94003F371E /* screens */,
 				5515626F2BC95BF7003F371E /* ContentView.swift */,
+				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
 				5515627C2BC95EB6003F371E /* DwightScheduleView.swift */,
 				5515627F2BC95F83003F371E /* BModel.swift */,
 				551562862BC962E9003F371E /* FormatDateUtil.swift */,
 				551562882BC965C2003F371E /* GetCycleUtil.swift */,
 				551562832BC9608E003F371E /* DwightScheduleModel.swift */,
+				55E01BDF2BD184EB000751FF /* ContentView2.swift */,
 				551562712BC95BF8003F371E /* Assets.xcassets */,
 				551562732BC95BF8003F371E /* Preview Content */,
 			);
@@ -87,7 +91,6 @@
 		5515627B2BC95E94003F371E /* screens */ = {
 			isa = PBXGroup;
 			children = (
-				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				551562872BC962E9003F371E /* FormatDateUtil.swift in Sources */,
 				551562892BC965C2003F371E /* GetCycleUtil.swift in Sources */,
 				5515627D2BC95EB6003F371E /* DwightScheduleView.swift in Sources */,
+				55E01BE02BD184EB000751FF /* ContentView2.swift in Sources */,
 				5515626E2BC95BF7003F371E /* Schola_1App.swift in Sources */,
 				551562842BC9608E003F371E /* DwightScheduleModel.swift in Sources */,
 			);
