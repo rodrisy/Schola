@@ -69,63 +69,73 @@ func getToday() -> Day {
     return Day(rawValue: today)!
 }
 
-func formatDate(_ date: Date) -> String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-    dateFormatter.dateFormat = "EEEE, MMMM d"
-    let dateString = dateFormatter.string(from: date)
-    let day = Calendar.current.component(.day, from: date)
-    let suffix: String
-    switch day {
-    case 1, 21, 31: suffix = "st"
-    case 2, 22: suffix = "nd"
-    case 3, 23: suffix = "rd"
-    default: suffix = "th"
-    }
-    return "\(dateString)\(suffix)"
-}
-
 struct ContentView: View {
     let schedule = Schedule()
+    @State private var currentDayIndex = 0
     @State private var currentDay = getToday()
     
     var body: some View {
-        VStack {
-            Text("Date: \(formatDate(Date()))")
-                .font(.title)
-                .padding()
-            
-            Text("Today's Classes")
-                .font(.title)
-                .padding()
-            
-            let classes = schedule.getClasses(for: currentDay)
-            
-            if classes.isEmpty {
-                Text("No classes today!")
-                    .padding()
-            } else {
-                ForEach(classes, id: \.self) { subject in
-                    Text(subject.rawValue)
+        TabView(selection: $currentDay) {
+            ForEach(Day.allCases, id: \.self) { day in
+                VStack {
+                    Text("Selected Date: \(day.stringValue)")
+                        .font(.title)
                         .padding()
+                    
+                    Text("Date: \(formatDate(Date()))")
+                        .font(.title)
+                        .padding()
+                    
+                    Text("Today's Classes")
+                        .font(.title)
+                        .padding()
+                    
+                    let classes = schedule.getClasses(for: day)
+                    
+                    if classes.isEmpty {
+                        Text("No classes today!")
+                            .padding()
+                    } else {
+                        ForEach(classes, id: \.self) { subject in
+                            Text(subject.rawValue)
+                                .padding()
+                        }
+                    }
                 }
+                .tag(day)
             }
         }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
         .gesture(
             DragGesture()
                 .onEnded { gesture in
                     if gesture.translation.width > 0 {
-                        self.currentDay = self.currentDay.previous()
+                        withAnimation {
+                            self.currentDayIndex = (self.currentDayIndex + 1) % Day.allCases.count
+                            self.currentDay = Day.allCases[self.currentDayIndex]
+                        }
                     } else {
-                        self.currentDay = self.currentDay.next()
+                        withAnimation {
+                            self.currentDayIndex = (self.currentDayIndex - 1 + Day.allCases.count) % Day.allCases.count
+                            self.currentDay = Day.allCases[self.currentDayIndex]
+                        }
                     }
                 }
         )
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    
+    func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "EEEE, d MMMM"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
