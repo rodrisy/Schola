@@ -1,6 +1,8 @@
 import SwiftUI
 import Foundation
 
+var dayDifference = 0
+
 enum Day: Int, CaseIterable {
     case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
     
@@ -8,6 +10,7 @@ enum Day: Int, CaseIterable {
         let allDays = Day.allCases
         let index = allDays.firstIndex(of: self)!
         let previousIndex = (index + allDays.count - 1) % allDays.count
+        dayDifference -= 1
         return allDays[previousIndex]
     }
     
@@ -15,6 +18,7 @@ enum Day: Int, CaseIterable {
         let allDays = Day.allCases
         let index = allDays.firstIndex(of: self)!
         let nextIndex = (index + 1) % allDays.count
+        dayDifference += 1
         return allDays[nextIndex]
     }
     
@@ -44,18 +48,20 @@ enum Subject: String {
 
 struct Schedule {
     let subjects: [Day: [Subject]]
-    
-    init() {
-        self.subjects = [
-            .sunday: [],
-            .monday: [.chem, .computerScience, .econ],
-            .tuesday: [.english, .spanish, .chem],
-            .wednesday: [.philosophy, .art, .physics],
-            .thursday: [.computerScience, .econ, .english],
-            .friday: [.spanish, .chem, .philosophy],
-            .saturday: []
-        ]
-    }
+    let vacationDays: [String]  // Array to store vacation days as strings
+
+        init(vacationDays: [String] = []) { // Default value of empty array for vacationDays
+            self.subjects = [
+                .sunday: [],
+                .monday: [.chem, .computerScience, .econ],
+                .tuesday: [.english, .spanish, .chem],
+                .wednesday: [.philosophy, .art, .physics],
+                .thursday: [.computerScience, .econ, .english],
+                .friday: [.spanish, .chem, .philosophy],
+                .saturday: []
+            ]
+            self.vacationDays = vacationDays
+        }
     
     func getClasses(for day: Day) -> [Subject] {
         guard let classes = subjects[day] else { return [] }
@@ -63,19 +69,21 @@ struct Schedule {
     }
 }
 
-func getToday() -> Day {
-    let calendar = Calendar.current
-    let today = calendar.component(.weekday, from: Date())
-    return Day(rawValue: today)!
+func getToday() -> Date {
+    return Date()
 }
 
 struct ContentView: View {
     let schedule = Schedule()
-    @State private var currentDayIndex = 0
-    @State private var currentDay = getToday()
-    
+    var selectedDate: Date
+    var indexDay: Int
+        
+    init() {
+        self.selectedDate = calculateCurrentDay(today: getToday(), dayDifference: 0)
+        self.indexDay = calculateCycleDay(currentDate: selectedDate, cycleDays: 6, schedules: [schedule])
+    }
     var body: some View {
-        TabView(selection: $currentDay) {
+        TabView() {
             ForEach(Day.allCases, id: \.self) { day in
                 VStack {
                     Text("Selected Date: \(day.stringValue)")
@@ -85,6 +93,8 @@ struct ContentView: View {
                     Text("Date: \(formatDate(Date()))")
                         .font(.title)
                         .padding()
+                    
+                    Text("todays: \(formatDateEEEEddMMMMyyyy(date: selectedDate))")
                     
                     Text("Today's Classes")
                         .font(.title)
@@ -109,16 +119,13 @@ struct ContentView: View {
         .gesture(
             DragGesture()
                 .onEnded { gesture in
-                    if gesture.translation.width > 0 {
-                        withAnimation {
-                            self.currentDayIndex = (self.currentDayIndex + 1) % Day.allCases.count
-                            self.currentDay = Day.allCases[self.currentDayIndex]
-                        }
+                    let translation = gesture.translation.width
+                    if translation > 0 {
+                        // Swipe right, go to previous day
+                    let selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate) ?? selectedDate
                     } else {
-                        withAnimation {
-                            self.currentDayIndex = (self.currentDayIndex - 1 + Day.allCases.count) % Day.allCases.count
-                            self.currentDay = Day.allCases[self.currentDayIndex]
-                        }
+                        // Swipe left, go to next day
+                    let selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
                     }
                 }
         )
@@ -138,4 +145,8 @@ struct ContentView: View {
             ContentView()
         }
     }
+}
+
+#Preview {
+    ContentView()
 }

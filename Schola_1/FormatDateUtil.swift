@@ -34,3 +34,30 @@ func formatDateMMMMDD(date: Date) -> String {
     formatter.dateFormat = "MMMM dd"
     return formatter.string(from: date)
 }
+
+func calculateCycleDay(currentDate: Date, cycleDays: Int, schedules: [Schedule]) -> Int {
+    let calendar = Calendar.current
+    var startDay = calendar.date(from: DateComponents(year: calendar.component(.year, from: currentDate), month: 1, day: 4))!
+
+    while calendar.component(.weekday, from: startDay) != 2 {
+        startDay = calendar.date(byAdding: .day, value: 1, to: startDay)!
+    }
+
+    var daysBetween = 0
+    var currentDate = currentDate
+
+    while startDay < currentDate {
+        if !calendar.isDateInWeekend(startDay) {
+            let formattedStartDay = DateFormatter().string(from: startDay)
+            for schedule in schedules {
+                            if !schedule.vacationDays.contains(formattedStartDay) {
+                                daysBetween += 1
+                            }
+                        }
+        }
+        startDay = calendar.date(byAdding: .day, value: 1, to: startDay)!
+    }
+
+    let cycleDay = daysBetween % cycleDays
+    return cycleDay == 0 ? cycleDays : cycleDay
+}
