@@ -12,6 +12,7 @@ struct DateView: View {
                 .font(.title)
                 .padding()
         }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
         .gesture(
             DragGesture()
                 .onEnded { value in
