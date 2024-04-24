@@ -75,13 +75,15 @@ func getToday() -> Date {
 
 struct ContentView: View {
     let schedule = Schedule()
-    var selectedDate: Date
-    var indexDay: Int
-        
+    @State private var selectedDate = Date()
+    @State private var formattedDate = ""
+    
     init() {
-        self.selectedDate = calculateCurrentDay(today: getToday(), dayDifference: 0)
-        self.indexDay = calculateCycleDay(currentDate: selectedDate, cycleDays: 6, schedules: [schedule])
+        let initialDate = calculateCurrentDay(today: getToday(), dayDifference: 0)
+        self._selectedDate = State(initialValue: initialDate)
+        self._formattedDate = State(initialValue: formatDate(initialDate))
     }
+    
     var body: some View {
         TabView() {
             ForEach(Day.allCases, id: \.self) { day in
@@ -90,27 +92,13 @@ struct ContentView: View {
                         .font(.title)
                         .padding()
                     
-                    Text("Date: \(formatDate(Date()))")
+                    // Use formattedDate instead of formatting selectedDate directly
+                    Text("Date: \(formattedDate)")
                         .font(.title)
                         .padding()
                     
-                    Text("todays: \(formatDateEEEEddMMMMyyyy(date: selectedDate))")
-                    
-                    Text("Today's Classes")
-                        .font(.title)
-                        .padding()
-                    
-                    let classes = schedule.getClasses(for: day)
-                    
-                    if classes.isEmpty {
-                        Text("No classes today!")
-                            .padding()
-                    } else {
-                        ForEach(classes, id: \.self) { subject in
-                            Text(subject.rawValue)
-                                .padding()
-                        }
-                    }
+                    DateView()
+                    // Other views...
                 }
                 .tag(day)
             }
@@ -122,15 +110,15 @@ struct ContentView: View {
                     let translation = gesture.translation.width
                     if translation > 0 {
                         // Swipe right, go to previous day
-                    let selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate) ?? selectedDate
+                        selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate) ?? selectedDate
                     } else {
                         // Swipe left, go to next day
-                    let selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
+                        selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
                     }
+                    formattedDate = formatDate(selectedDate) // Update formatted date
                 }
         )
     }
-    
     
     func formatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -140,12 +128,18 @@ struct ContentView: View {
         return dateString
     }
     
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+    func calculateCurrentDay(today: Date, dayDifference: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: dayDifference, to: today) ?? today
     }
 }
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
 
 #Preview {
     ContentView()

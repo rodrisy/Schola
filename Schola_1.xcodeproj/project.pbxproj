@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550F7B502BD96B72007E6B27 /* dateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F7B4F2BD96B72007E6B27 /* dateView.swift */; };
 		5515626E2BC95BF7003F371E /* Schola_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515626D2BC95BF7003F371E /* Schola_1App.swift */; };
 		551562702BC95BF7003F371E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515626F2BC95BF7003F371E /* ContentView.swift */; };
 		551562722BC95BF8003F371E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551562712BC95BF8003F371E /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		550F7B4F2BD96B72007E6B27 /* dateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateView.swift; sourceTree = "<group>"; };
 		5515626A2BC95BF7003F371E /* Schola_1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schola_1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5515626D2BC95BF7003F371E /* Schola_1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schola_1App.swift; sourceTree = "<group>"; };
 		5515626F2BC95BF7003F371E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				551562882BC965C2003F371E /* GetCycleUtil.swift */,
 				551562832BC9608E003F371E /* DwightScheduleModel.swift */,
 				55E01BDF2BD184EB000751FF /* ContentView2.swift */,
+				550F7B4F2BD96B72007E6B27 /* dateView.swift */,
 				551562712BC95BF8003F371E /* Assets.xcassets */,
 				551562732BC95BF8003F371E /* Preview Content */,
 			);
@@ -184,6 +187,7 @@
 				551562872BC962E9003F371E /* FormatDateUtil.swift in Sources */,
 				551562892BC965C2003F371E /* GetCycleUtil.swift in Sources */,
 				5515627D2BC95EB6003F371E /* DwightScheduleView.swift in Sources */,
+				550F7B502BD96B72007E6B27 /* dateView.swift in Sources */,
 				55E01BE02BD184EB000751FF /* ContentView2.swift in Sources */,
 				5515626E2BC95BF7003F371E /* Schola_1App.swift in Sources */,
 				551562842BC9608E003F371E /* DwightScheduleModel.swift in Sources */,
