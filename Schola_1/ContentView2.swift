@@ -97,7 +97,7 @@ struct ContentView: View {
                         .font(.title)
                         .padding()
                     
-                    DateView()
+                    
                     // Other views...
                 }
                 .tag(day)
