@@ -1,7 +1,7 @@
 import Foundation
 
 func calculateCycleDay(currentDate: Date, cycleDays: Int, vacationDays: [String]) -> Int {
-    var startDay = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: currentDate), month: 1, day: 4))!
+    var startDay = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: currentDate), month: 3, day: 15))!
     
     while Calendar.current.component(.weekday, from: startDay) != 2 { // Monday
         startDay = Calendar.current.date(byAdding: .day, value: 1, to: startDay)!
