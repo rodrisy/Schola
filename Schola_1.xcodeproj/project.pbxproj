@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		550F7B502BD96B72007E6B27 /* dateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F7B4F2BD96B72007E6B27 /* dateView.swift */; };
 		5515626E2BC95BF7003F371E /* Schola_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515626D2BC95BF7003F371E /* Schola_1App.swift */; };
-		551562702BC95BF7003F371E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515626F2BC95BF7003F371E /* ContentView.swift */; };
 		551562722BC95BF8003F371E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551562712BC95BF8003F371E /* Assets.xcassets */; };
 		551562752BC95BF8003F371E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551562742BC95BF8003F371E /* Preview Assets.xcassets */; };
-		5515627D2BC95EB6003F371E /* DwightScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515627C2BC95EB6003F371E /* DwightScheduleView.swift */; };
 		551562802BC95F83003F371E /* BModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515627F2BC95F83003F371E /* BModel.swift */; };
 		551562842BC9608E003F371E /* DwightScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562832BC9608E003F371E /* DwightScheduleModel.swift */; };
 		551562872BC962E9003F371E /* FormatDateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562862BC962E9003F371E /* FormatDateUtil.swift */; };
 		551562892BC965C2003F371E /* GetCycleUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562882BC965C2003F371E /* GetCycleUtil.swift */; };
+		552AF5202BDD32F7005D94E3 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AF51F2BDD32F7005D94E3 /* loginView.swift */; };
 		55E01BE02BD184EB000751FF /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E01BDF2BD184EB000751FF /* ContentView2.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,14 +23,13 @@
 		550F7B4F2BD96B72007E6B27 /* dateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateView.swift; sourceTree = "<group>"; };
 		5515626A2BC95BF7003F371E /* Schola_1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schola_1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5515626D2BC95BF7003F371E /* Schola_1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schola_1App.swift; sourceTree = "<group>"; };
-		5515626F2BC95BF7003F371E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		551562712BC95BF8003F371E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551562742BC95BF8003F371E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5515627C2BC95EB6003F371E /* DwightScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwightScheduleView.swift; sourceTree = "<group>"; };
 		5515627F2BC95F83003F371E /* BModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BModel.swift; sourceTree = "<group>"; };
 		551562832BC9608E003F371E /* DwightScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwightScheduleModel.swift; sourceTree = "<group>"; };
 		551562862BC962E9003F371E /* FormatDateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateUtil.swift; sourceTree = "<group>"; };
 		551562882BC965C2003F371E /* GetCycleUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCycleUtil.swift; sourceTree = "<group>"; };
+		552AF51F2BDD32F7005D94E3 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		55E01BDF2BD184EB000751FF /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,15 +66,11 @@
 				551562852BC962C1003F371E /* utils */,
 				5515627E2BC95F6E003F371E /* models */,
 				5515627B2BC95E94003F371E /* screens */,
-				5515626F2BC95BF7003F371E /* ContentView.swift */,
 				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
-				5515627C2BC95EB6003F371E /* DwightScheduleView.swift */,
 				5515627F2BC95F83003F371E /* BModel.swift */,
 				551562862BC962E9003F371E /* FormatDateUtil.swift */,
-				551562882BC965C2003F371E /* GetCycleUtil.swift */,
-				551562832BC9608E003F371E /* DwightScheduleModel.swift */,
-				55E01BDF2BD184EB000751FF /* ContentView2.swift */,
 				550F7B4F2BD96B72007E6B27 /* dateView.swift */,
+				552AF51F2BDD32F7005D94E3 /* loginView.swift */,
 				551562712BC95BF8003F371E /* Assets.xcassets */,
 				551562732BC95BF8003F371E /* Preview Content */,
 			);
@@ -101,6 +95,9 @@
 		5515627E2BC95F6E003F371E /* models */ = {
 			isa = PBXGroup;
 			children = (
+				551562882BC965C2003F371E /* GetCycleUtil.swift */,
+				551562832BC9608E003F371E /* DwightScheduleModel.swift */,
+				55E01BDF2BD184EB000751FF /* ContentView2.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -183,13 +180,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				551562802BC95F83003F371E /* BModel.swift in Sources */,
-				551562702BC95BF7003F371E /* ContentView.swift in Sources */,
 				551562872BC962E9003F371E /* FormatDateUtil.swift in Sources */,
 				551562892BC965C2003F371E /* GetCycleUtil.swift in Sources */,
-				5515627D2BC95EB6003F371E /* DwightScheduleView.swift in Sources */,
 				550F7B502BD96B72007E6B27 /* dateView.swift in Sources */,
 				55E01BE02BD184EB000751FF /* ContentView2.swift in Sources */,
 				5515626E2BC95BF7003F371E /* Schola_1App.swift in Sources */,
+				552AF5202BDD32F7005D94E3 /* loginView.swift in Sources */,
 				551562842BC9608E003F371E /* DwightScheduleModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

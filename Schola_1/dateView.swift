@@ -8,76 +8,77 @@ struct ContentView3: View {
     let schedules = dwightschedules.first(where: { $0.scheduleName == "11grade" })
 
     var body: some View {
-        ZStack {
-            backgroundColor.edgesIgnoringSafeArea(.all)
-            VStack {
-                // page index
-                Text("\(number)")
-                    .font(.system(size: 100, weight: .bold, design: .default))
-                    .foregroundColor(.white)
-                    .padding()
-                // current day MMM dd yyyy
-                Text("\(formattedDate(date: currentDate))")
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .padding()
-                // current day EEEE
-                Text("\(formattedWeekday(date: currentDate))")
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .padding()
-                // dayIndex
-                let indexDay = calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: [])
-                Text("\(calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: []))")
-                    .font(.system(size: 100, weight: .bold, design: .default))
-                    .foregroundColor(.white)
-                    .padding()
-
-                if let schedules = schedules {
-                    let dayIndex = indexDay - 1
-                    if dayIndex < schedules.days.count {
-                        
-                        let selectedDay = schedules.days[dayIndex]
-                        
-                        let colorIndex = dayIndex % self.rainbowColors.count
-
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(selectedDay.dayName)
-                                .font(.subheadline)
-                                .foregroundColor(.white)
-                                .padding(5)
-                                .background(self.rainbowColors[colorIndex])
-                                .cornerRadius(5)
-
-                            ForEach(selectedDay.blocks, id: \.letter) { block in
-                                // Display block details
-                                HStack {
-                                    Text("\(block.letter): \(block.startTime) - \(block.endTime)")
-                                    Spacer()
+        NavigationView {
+            ZStack {
+                backgroundColor.edgesIgnoringSafeArea(.all)
+                VStack {
+                    // page index
+                    Text("\(number)")
+                        .font(.system(size: 100, weight: .bold, design: .default))
+                        .foregroundColor(.white)
+                        .padding()
+                    // current day MMM dd yyyy
+                    Text("\(formattedDate(date: currentDate))")
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .padding()
+                    // current day EEEE
+                    Text("\(formattedWeekday(date: currentDate))")
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .padding()
+                    // dayIndex
+                    let indexDay = calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: [])
+                    Text("\(calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: []))")
+                        .font(.system(size: 100, weight: .bold, design: .default))
+                        .foregroundColor(.white)
+                        .padding()
+                    
+                    if let schedules = schedules {
+                        let dayIndex = indexDay - 1
+                        if dayIndex < schedules.days.count {
+                            
+                            let selectedDay = schedules.days[dayIndex]
+                            
+                            let colorIndex = dayIndex % self.rainbowColors.count
+                            
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text(selectedDay.dayName)
+                                    .font(.subheadline)
+                                    .foregroundColor(.white)
+                                    .padding(5)
+                                    .background(self.rainbowColors[colorIndex])
+                                    .cornerRadius(5)
+                                
+                                ForEach(selectedDay.blocks, id: \.letter) { block in
+                                    // Display block details
+                                    HStack {
+                                        Text("\(block.letter): \(block.startTime) - \(block.endTime)")
+                                        Spacer()
+                                    }
+                                    .padding(5)
+                                    .background(self.rainbowColors[colorIndex])
+                                    .cornerRadius(5)
+                                    .foregroundColor(.white)
                                 }
-                                .padding(5)
-                                .background(self.rainbowColors[colorIndex])
-                                .cornerRadius(5)
-                                .foregroundColor(.white)
                             }
                         }
                     }
                 }
             }
-        }
-        .gesture(
-            DragGesture()
-                .onEnded { value in
-                    if value.translation.width < 0 {
-                        // Swipe to the right
-                        self.changeValue(increase: true)
-                    } else {
-                        // Swipe to the left
-                        self.changeValue(increase: false)
+            .gesture(
+                DragGesture()
+                    .onEnded { value in
+                        if value.translation.width < 0 {
+                            // Swipe to the right
+                            self.changeValue(increase: true)
+                        } else {
+                            // Swipe to the left
+                            self.changeValue(increase: false)
+                        }
                     }
-                }
-        )
-    }
+            )
+        }}
 
     private func changeValue(increase: Bool) {
         if increase {
