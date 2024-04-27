@@ -4,6 +4,8 @@ struct ContentView3: View {
     @State private var currentDate = Date()
     @State private var number = 0
     @State private var backgroundColor = Color.green
+    let rainbowColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple]
+    let schedules = dwightschedules.first(where: { $0.scheduleName == "11grade" })
 
     var body: some View {
         ZStack {
@@ -25,11 +27,42 @@ struct ContentView3: View {
                     .foregroundColor(.white)
                     .padding()
                 // dayIndex
+                let indexDay = calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: [])
                 Text("\(calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: []))")
                     .font(.system(size: 100, weight: .bold, design: .default))
                     .foregroundColor(.white)
                     .padding()
-                
+
+                if let schedules = schedules {
+                    let dayIndex = indexDay - 1
+                    if dayIndex < schedules.days.count {
+                        
+                        let selectedDay = schedules.days[dayIndex]
+                        
+                        let colorIndex = dayIndex % self.rainbowColors.count
+
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(selectedDay.dayName)
+                                .font(.subheadline)
+                                .foregroundColor(.white)
+                                .padding(5)
+                                .background(self.rainbowColors[colorIndex])
+                                .cornerRadius(5)
+
+                            ForEach(selectedDay.blocks, id: \.letter) { block in
+                                // Display block details
+                                HStack {
+                                    Text("\(block.letter): \(block.startTime) - \(block.endTime)")
+                                    Spacer()
+                                }
+                                .padding(5)
+                                .background(self.rainbowColors[colorIndex])
+                                .cornerRadius(5)
+                                .foregroundColor(.white)
+                            }
+                        }
+                    }
+                }
             }
         }
         .gesture(
@@ -63,16 +96,10 @@ struct ContentView3: View {
         dateFormatter.dateFormat = "MMM dd, yyyy"
         return dateFormatter.string(from: date)
     }
-    
+
     private func formattedWeekday(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: date)
-    }
-}
-
-struct ContentView3_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView3()
     }
 }
