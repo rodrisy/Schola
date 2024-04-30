@@ -55,6 +55,7 @@ struct LoginView: View {
                         ContentView3()
                     }
                 }// close Vstack
+                .background(Color.white)
             }// close Ztack
             .navigationBarHidden(true)
         }// close navview
