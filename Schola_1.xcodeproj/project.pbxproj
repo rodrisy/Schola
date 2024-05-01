@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		551562722BC95BF8003F371E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551562712BC95BF8003F371E /* Assets.xcassets */; };
 		551562752BC95BF8003F371E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551562742BC95BF8003F371E /* Preview Assets.xcassets */; };
+		5591F3A62BE1566400F74741 /* GetCycleUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591F3A12BE1566400F74741 /* GetCycleUtil.swift */; };
+		5591F3A72BE1566400F74741 /* DwightScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591F3A22BE1566400F74741 /* DwightScheduleView.swift */; };
+		5591F3A92BE1566400F74741 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591F3A42BE1566400F74741 /* ContentView.swift */; };
+		5591F3AA2BE1575C00F74741 /* Schola_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515626D2BC95BF7003F371E /* Schola_1App.swift */; };
 		55B867C22BE12DB60006CCA3 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AF51F2BDD32F7005D94E3 /* loginView.swift */; };
 		55B867C32BE12DC80006CCA3 /* dateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F7B4F2BD96B72007E6B27 /* dateView.swift */; };
-		55B867C82BE12EC50006CCA3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B867C42BE12EC50006CCA3 /* ContentView.swift */; };
-		55B867C92BE12EC50006CCA3 /* GetCycleUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B867C52BE12EC50006CCA3 /* GetCycleUtil.swift */; };
-		55B867CA2BE12EC50006CCA3 /* DwightScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B867C62BE12EC50006CCA3 /* DwightScheduleView.swift */; };
-		55B867CB2BE12EC50006CCA3 /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B867C72BE12EC50006CCA3 /* ContentView2.swift */; };
+		55B867CE2BE150610006CCA3 /* FormatDateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562862BC962E9003F371E /* FormatDateUtil.swift */; };
+		55B867D72BE153BF0006CCA3 /* DwightScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551562832BC9608E003F371E /* DwightScheduleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +29,9 @@
 		551562832BC9608E003F371E /* DwightScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwightScheduleModel.swift; sourceTree = "<group>"; };
 		551562862BC962E9003F371E /* FormatDateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateUtil.swift; sourceTree = "<group>"; };
 		552AF51F2BDD32F7005D94E3 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
-		55B867C42BE12EC50006CCA3 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../../../../.Trash/ContentView.swift; sourceTree = "<group>"; };
-		55B867C52BE12EC50006CCA3 /* GetCycleUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetCycleUtil.swift; path = ../../../../.Trash/GetCycleUtil.swift; sourceTree = "<group>"; };
-		55B867C62BE12EC50006CCA3 /* DwightScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DwightScheduleView.swift; path = ../../../../.Trash/DwightScheduleView.swift; sourceTree = "<group>"; };
+		5591F3A12BE1566400F74741 /* GetCycleUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetCycleUtil.swift; path = ../../../../.Trash/GetCycleUtil.swift; sourceTree = "<group>"; };
+		5591F3A22BE1566400F74741 /* DwightScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DwightScheduleView.swift; path = ../../../../.Trash/DwightScheduleView.swift; sourceTree = "<group>"; };
+		5591F3A42BE1566400F74741 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../../../../.Trash/ContentView.swift; sourceTree = "<group>"; };
 		55B867C72BE12EC50006CCA3 /* ContentView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView2.swift; path = ../../../../.Trash/ContentView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,17 +65,18 @@
 		5515626C2BC95BF7003F371E /* Schola_1 */ = {
 			isa = PBXGroup;
 			children = (
-				5515627E2BC95F6E003F371E /* models */,
 				5515627B2BC95E94003F371E /* screens */,
-				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
-				5515627F2BC95F83003F371E /* BModel.swift */,
-				55B867C42BE12EC50006CCA3 /* ContentView.swift */,
-				55B867C72BE12EC50006CCA3 /* ContentView2.swift */,
-				55B867C62BE12EC50006CCA3 /* DwightScheduleView.swift */,
-				55B867C52BE12EC50006CCA3 /* GetCycleUtil.swift */,
-				551562862BC962E9003F371E /* FormatDateUtil.swift */,
-				550F7B4F2BD96B72007E6B27 /* dateView.swift */,
+				5515627E2BC95F6E003F371E /* models */,
+				551562832BC9608E003F371E /* DwightScheduleModel.swift */,
 				552AF51F2BDD32F7005D94E3 /* loginView.swift */,
+				550F7B4F2BD96B72007E6B27 /* dateView.swift */,
+				551562862BC962E9003F371E /* FormatDateUtil.swift */,
+				5515627F2BC95F83003F371E /* BModel.swift */,
+				5591F3A42BE1566400F74741 /* ContentView.swift */,
+				55B867C72BE12EC50006CCA3 /* ContentView2.swift */,
+				5591F3A22BE1566400F74741 /* DwightScheduleView.swift */,
+				5591F3A12BE1566400F74741 /* GetCycleUtil.swift */,
+				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
 				551562712BC95BF8003F371E /* Assets.xcassets */,
 				551562732BC95BF8003F371E /* Preview Content */,
 			);
@@ -98,7 +101,6 @@
 		5515627E2BC95F6E003F371E /* models */ = {
 			isa = PBXGroup;
 			children = (
-				551562832BC9608E003F371E /* DwightScheduleModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -174,11 +176,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B867C32BE12DC80006CCA3 /* dateView.swift in Sources */,
+				5591F3A72BE1566400F74741 /* DwightScheduleView.swift in Sources */,
+				55B867D72BE153BF0006CCA3 /* DwightScheduleModel.swift in Sources */,
+				5591F3A62BE1566400F74741 /* GetCycleUtil.swift in Sources */,
+				5591F3A92BE1566400F74741 /* ContentView.swift in Sources */,
 				55B867C22BE12DB60006CCA3 /* loginView.swift in Sources */,
-				55B867C82BE12EC50006CCA3 /* ContentView.swift in Sources */,
-				55B867CB2BE12EC50006CCA3 /* ContentView2.swift in Sources */,
-				55B867C92BE12EC50006CCA3 /* GetCycleUtil.swift in Sources */,
-				55B867CA2BE12EC50006CCA3 /* DwightScheduleView.swift in Sources */,
+				55B867CE2BE150610006CCA3 /* FormatDateUtil.swift in Sources */,
+				5591F3AA2BE1575C00F74741 /* Schola_1App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

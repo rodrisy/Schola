@@ -51,11 +51,11 @@ struct LoginView: View {
                             .padding() // Add padding around the button
                     }
                     //navlink to other screen
-                    NavigationLink("Work Folder", isActive: $showingLoginScreen) {
-                        ContentView3()
-                    }
+                    .navigationDestination(
+                         isPresented: $showingLoginScreen) {
+                              ContentView3()
+                         }
                 }// close Vstack
-                .background(Color.white)
             }// close Ztack
             .navigationBarHidden(true)
         }// close navview
@@ -74,12 +74,12 @@ struct LoginView: View {
             wrongUsername = 3
         }
     }
-    
     struct LoginView_Previews: PreviewProvider {
         static var previews: some View {
             LoginView()
         }
     }
+    
     
 }// close loginView
 
