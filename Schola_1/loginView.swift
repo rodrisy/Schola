@@ -23,6 +23,7 @@ struct LoginView: View {
                     .foregroundColor(.white)
                 // open vstack
                 VStack{
+                    Image("schola_elephant copy").frame(width: 0.5, height: 0.5).cornerRadius(25)
                     Text("Login")
                         .font(.largeTitle)
                         .bold()
@@ -74,12 +75,6 @@ struct LoginView: View {
             wrongUsername = 3
         }
     }
-    struct LoginView_Previews: PreviewProvider {
-        static var previews: some View {
-            LoginView()
-        }
-    }
-    
     
 }// close loginView
 
