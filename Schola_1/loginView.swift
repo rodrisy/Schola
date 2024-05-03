@@ -28,13 +28,13 @@ struct LoginView: View {
                         .font(.largeTitle)
                         .bold()
                         .padding()
-                    TextField("Username", text: $username )
+                    TextField("2025rsanchez", text: $username )
                         .padding()
                         .frame(width: 300, height: 50)
                         .background (Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .border(.red.opacity(0.5), width: CGFloat(wrongUsername))
-                    SecureField("Password", text: $password )
+                    SecureField("enter 1234", text: $password )
                         .padding()
                         .frame(width: 300, height: 50)
                         .background (Color.black.opacity(0.05))
@@ -112,3 +112,7 @@ struct LoginView: View {
 //        }
 //    }
 //}
+
+#Preview {
+    LoginView()
+}
