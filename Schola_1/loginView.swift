@@ -5,9 +5,7 @@ struct LoginView: View {
     
     @State private var backgroundColor = Color(UIColor.systemGray5) // Change the background color here
     @State private var username = ""
-    @State private var password = ""
     @State private var wrongUsername = 0
-    @State private var wrongPassword = 0
     @State private var showingLoginScreen = false
     
     var body: some View {
@@ -34,15 +32,15 @@ struct LoginView: View {
                         .background (Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .border(.red.opacity(0.5), width: CGFloat(wrongUsername))
-                    SecureField("enter 1234", text: $password )
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background (Color.black.opacity(0.05))
-                        .cornerRadius(10)
-                        .border(.red.opacity(0.5), width: CGFloat(wrongPassword))
+//                    SecureField("enter 1234", text: $password )
+//                        .padding()
+//                        .frame(width: 300, height: 50)
+//                        .background (Color.black.opacity(0.05))
+//                        .cornerRadius(10)
+//                        .border(.red.opacity(0.5), width: CGFloat(wrongPassword))
                     Button(action: {
                         // authenticate the user
-                        authenticateUser(username: username, password: password)
+                        authenticateUser(username: username)
                     }) {
                         Text("login")
                             .foregroundColor(.white)
@@ -62,18 +60,23 @@ struct LoginView: View {
         }// close navview
         
     }// close body
-    func authenticateUser(username: String, password: String) {
-        if username.lowercased() == "2025rsanchez" {
-            wrongUsername = 0
-            if password == "1234"{
-                wrongPassword = 0
-                showingLoginScreen = true
-            }else{
-                wrongPassword = 3
+    func authenticateUser(username: String) {
+        // Loop through the schedules in the database
+        for Schedule in dwightSchedule {
+            // Loop through the students in each schedule
+            for Student in Schedule.students {
+                // Check if the username matches any student's username
+                if Student.username == username.lowercased() {
+                    // Username found, authentication successful
+                    wrongUsername = 0
+                    showingLoginScreen = true
+                    
+                }
             }
-        }else{
-            wrongUsername = 3
         }
+        // Username not found, authentication failed
+        wrongUsername = 2
+        showingLoginScreen = false
     }
     
 }// close loginView

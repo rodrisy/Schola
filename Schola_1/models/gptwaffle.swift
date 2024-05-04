@@ -83,7 +83,7 @@ func parseSchedule(_ scheduleText: String) -> [Schedule] {
         }
         schedules.append(schedule)
     }
-
+    print(schedules)
     return schedules
 }
 
@@ -102,4 +102,3 @@ IB DP Spanish A Lang & Lit SL I (1)    ######    ######    Columbus Campus - 564
 """
 
 let dwightSchedule1 = parseSchedule(scheduleText)
-print(dwightSchedule1)

@@ -63,8 +63,9 @@
 			children = (
 				5515627E2BC95F6E003F371E /* models */,
 				5515627B2BC95E94003F371E /* screens */,
-				552AF51F2BDD32F7005D94E3 /* loginView.swift */,
+				552FCA832BE47FB200D52F90 /* G11Model.swift */,
 				550F7B4F2BD96B72007E6B27 /* dateView.swift */,
+				552AF51F2BDD32F7005D94E3 /* loginView.swift */,
 				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
 				551562712BC95BF8003F371E /* Assets.xcassets */,
 				551562732BC95BF8003F371E /* Preview Content */,
@@ -92,7 +93,6 @@
 			children = (
 				551562832BC9608E003F371E /* DwightScheduleModel.swift */,
 				551562862BC962E9003F371E /* FormatDateUtil.swift */,
-				552FCA832BE47FB200D52F90 /* G11Model.swift */,
 				552FCA852BE4834000D52F90 /* gptwaffle.swift */,
 			);
 			path = models;
