@@ -50,10 +50,11 @@ struct LoginView: View {
                             .padding() // Add padding around the button
                     }
                     //navlink to other screen
-                    .navigationDestination(
-                         isPresented: $showingLoginScreen) {
-                              ContentView3()
-                         }
+                    NavigationLink(
+                        destination: ContentView3(username: username),
+                                isActive: $showingLoginScreen,
+                                label: {}
+                            )
                 }// close Vstack
             }// close Ztack
             .navigationBarHidden(true)
@@ -71,12 +72,13 @@ struct LoginView: View {
                     wrongUsername = 0
                     showingLoginScreen = true
                     
+                } else {
+                    // Username not found, authentication failed
+                    wrongUsername = 2
+                    showingLoginScreen = false
                 }
             }
         }
-        // Username not found, authentication failed
-        wrongUsername = 2
-        showingLoginScreen = false
     }
     
 }// close loginView

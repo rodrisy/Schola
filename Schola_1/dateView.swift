@@ -6,6 +6,8 @@ struct ContentView3: View {
     @State private var backgroundColor = Color.green
     let rainbowColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple]
     let schedules = dwightschedules.first(where: { $0.scheduleName == "11grade" })
+    
+    let username: String
 
     var body: some View {
         NavigationView {
@@ -33,6 +35,17 @@ struct ContentView3: View {
                         .font(.system(size: 100, weight: .bold, design: .default))
                         .foregroundColor(.white)
                         .padding()
+                    
+                    let userSchedule = dwightSchedule.first { $0.students.contains { $0.username == username } }
+                    
+                    if let userSchedule = userSchedule{
+                       let classesForDay = userSchedule.students.first?.cycle[indexDay].schedule {
+                        ForEach(classesForDay, id: \.self) { classObj in
+                            Text("\(classObj.name) - \(classObj.teacher)")
+                        }
+                    } else {
+                        Text("No classes found")
+                    }
                     
                     if let schedules = schedules {
                         let dayIndex = indexDay - 1
