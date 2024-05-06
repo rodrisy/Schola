@@ -27,10 +27,10 @@ struct ContentView3: View {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     // page index
-                    Text("\(number)")
-                        .font(.system(size: 100, weight: .bold, design: .default))
-                        .foregroundColor(.white)
-                        .padding()
+//                    Text("\(number)")
+//                        .font(.system(size: 100, weight: .bold, design: .default))
+//                        .foregroundColor(.white)
+//                        .padding()
                     // current day MMM dd yyyy
                     Text("\(formattedDate(date: currentDate))")
                         .font(.title)
@@ -55,12 +55,15 @@ struct ContentView3: View {
                         
                         // Display the user schedule details
                         ForEach(userSchedule.cycle[indexDay-1].schedule, id: \.name) { classInfo in
-                            VStack(alignment: .leading) {
+                            let randomColor = rainbowColors.randomElement()
+                            ZStack {
+                                randomColor
+                                    .cornerRadius(8)
                                 Text("\(classInfo.name) - \(classInfo.teacher)")
                                     .font(.subheadline)
-        
-                                }
-                            .padding()
+                                    .foregroundColor(.white)
+                                    .padding()
+                            }
                         }
                     } else {
                         Text("User Schedule not found.")
