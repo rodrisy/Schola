@@ -5,10 +5,22 @@ struct ContentView3: View {
     @State private var number = 0
     @State private var backgroundColor = Color.green
     let rainbowColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple]
-    let schedules = dwightschedules.first(where: { $0.scheduleName == "11grade" })
+//    let schedules = dwightschedules.first(where: { $0.scheduleName == "11grade" })
+    
     
     let username: String
 
+    // Find the userSchedule
+        var userSchedule: Student? {
+            // Iterate through the dwightSchedule to find the matching student
+            for schedule in dwightSchedule {
+                if let student = schedule.students.first(where: { $0.username == username }) {
+                    return student
+                }
+            }
+            return nil
+        }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -36,47 +48,26 @@ struct ContentView3: View {
                         .foregroundColor(.white)
                         .padding()
                     
-                    let userSchedule = dwightSchedule.first { $0.students.contains { $0.username == username } }
-                    
-                    if let userSchedule = userSchedule{
-                       let classesForDay = userSchedule.students.first?.cycle[indexDay].schedule {
-                        ForEach(classesForDay, id: \.self) { classObj in
-                            Text("\(classObj.name) - \(classObj.teacher)")
+                    if let userSchedule = userSchedule {
+                        Text("User Schedule:")
+                            .font(.title)
+                            .padding()
+                        
+                        // Display the user schedule details
+                        ForEach(userSchedule.cycle[indexDay-1].schedule, id: \.name) { classInfo in
+                            VStack(alignment: .leading) {
+                                Text("\(classInfo.name) - \(classInfo.teacher)")
+                                    .font(.subheadline)
+        
+                                }
+                            .padding()
                         }
                     } else {
-                        Text("No classes found")
+                        Text("User Schedule not found.")
+                            .font(.title)
+                            .padding()
                     }
                     
-                    if let schedules = schedules {
-                        let dayIndex = indexDay - 1
-                        if dayIndex < schedules.days.count {
-                            
-                            let selectedDay = schedules.days[dayIndex]
-                            
-                            let colorIndex = dayIndex % self.rainbowColors.count
-                            
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text(selectedDay.dayName)
-                                    .font(.subheadline)
-                                    .foregroundColor(.white)
-                                    .padding(5)
-                                    .background(self.rainbowColors[colorIndex])
-                                    .cornerRadius(5)
-                                
-                                ForEach(selectedDay.blocks, id: \.letter) { block in
-                                    // Display block details
-                                    HStack {
-                                        Text("\(block.letter): \(block.startTime) - \(block.endTime)")
-                                        Spacer()
-                                    }
-                                    .padding(5)
-                                    .background(self.rainbowColors[colorIndex])
-                                    .cornerRadius(5)
-                                    .foregroundColor(.white)
-                                }
-                            }
-                        }
-                    }
                 }
             }
             .gesture(
