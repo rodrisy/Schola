@@ -32,21 +32,32 @@ struct ContentView3: View {
 //                        .foregroundColor(.white)
 //                        .padding()
                     // current day MMM dd yyyy
-                    Text("\(formattedDate(date: currentDate))")
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding()
-                    // current day EEEE
-                    Text("\(formattedWeekday(date: currentDate))")
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding()
+            
+                    HStack(alignment: .bottom, content: {
+                        Text("\(formattedWeekday(date: currentDate))")
+                            .font(.system(size: 34, weight: .bold))
+                            .foregroundColor(.white)
+                        Spacer()
+                        Text("\(formattedDate(date: currentDate))")
+                            .font(.system(size: 19, weight: .semibold))
+                            .foregroundColor(.white)
+                    })
+                    
+//                    Text("\(formattedDate(date: currentDate))")
+//                        .font(.title)
+//                        .foregroundColor(.white)
+//                        .padding()
+//                    // current day EEEE
+//                    Text("\(formattedWeekday(date: currentDate))")
+//                        .font(.title)
+//                        .foregroundColor(.white)
+//                        .padding()
                     // dayIndex
                     let indexDay = calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: [])
-                    Text("\(calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: []))")
-                        .font(.system(size: 100, weight: .bold, design: .default))
-                        .foregroundColor(.white)
-                        .padding()
+//                    Text("\(calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: []))")
+//                        .font(.system(size: 100, weight: .bold, design: .default))
+//                        .foregroundColor(.white)
+//                        .padding()
                     
                     if let userSchedule = userSchedule {
                         Text("User Schedule:")
@@ -64,14 +75,17 @@ struct ContentView3: View {
                                     .foregroundColor(.white)
                                     .padding()
                             }
+                            .frame(width: 360, height: 60)
                         }
                     } else {
                         Text("User Schedule not found.")
                             .font(.title)
                             .padding()
                     }
+                    Spacer()
                     
                 }
+                .padding(16)
             }
             .gesture(
                 DragGesture()
@@ -110,5 +124,11 @@ struct ContentView3: View {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: date)
     }
+}
+
+
+#Preview {
+    ContentView3(username: "2025rsanchez")
+
 }
 

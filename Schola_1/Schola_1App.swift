@@ -12,6 +12,7 @@ struct Schola_1App: App {
     var body: some Scene {
         WindowGroup {
             LoginView()
+            
         }
     }
 }

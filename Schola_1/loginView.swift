@@ -2,6 +2,7 @@ import SwiftUI
 import UIKit
 
 struct LoginView: View {
+
     
     @State private var backgroundColor = Color(UIColor.systemGray5) // Change the background color here
     @State private var username = ""
@@ -26,12 +27,21 @@ struct LoginView: View {
                         .font(.largeTitle)
                         .bold()
                         .padding()
-                    TextField("2025rsanchez", text: $username )
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background (Color.black.opacity(0.05))
-                        .cornerRadius(10)
-                        .border(.red.opacity(0.5), width: CGFloat(wrongUsername))
+                        .foregroundColor(.black)
+                    ZStack(alignment: .leading) {
+                           if username.isEmpty {
+                               Text("2025rsanchez")
+                                   .foregroundColor(Color.gray.opacity(0.5))
+                                   .padding(.leading, 15)
+                           }
+                           TextField("", text: $username)
+                               .padding()
+                               .foregroundColor(.black)
+                               .frame(width: 300, height: 50)
+                               .background(Color.black.opacity(0.05))
+                               .cornerRadius(10)
+                               .border(Color.red.opacity(0.5), width: CGFloat(wrongUsername))
+                       }
 //                    SecureField("enter 1234", text: $password )
 //                        .padding()
 //                        .frame(width: 300, height: 50)
@@ -59,7 +69,7 @@ struct LoginView: View {
             }// close Ztack
             .navigationBarHidden(true)
         }// close navview
-        
+        .preferredColorScheme(.light)
     }// close body
     func authenticateUser(username: String) {
         // Loop through the schedules in the database
@@ -72,10 +82,9 @@ struct LoginView: View {
                     wrongUsername = 0
                     showingLoginScreen = true
                     
-                } else {
+                } else if showingLoginScreen==false{
                     // Username not found, authentication failed
                     wrongUsername = 2
-                    showingLoginScreen = false
                 }
             }
         }
@@ -120,4 +129,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+    
 }
