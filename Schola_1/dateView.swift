@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView3: View {
     @State private var currentDate = Date()
     @State private var number = 0
-    @State private var backgroundColor = Color.green
+    @State private var backgroundColor = Color.black
     let rainbowColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple]
 //    let schedules = dwightschedules.first(where: { $0.scheduleName == "11grade" })
     
@@ -60,22 +60,48 @@ struct ContentView3: View {
 //                        .padding()
                     
                     if let userSchedule = userSchedule {
-                        Text("User Schedule:")
-                            .font(.title)
-                            .padding()
-                        
                         // Display the user schedule details
-                        ForEach(userSchedule.cycle[indexDay-1].schedule, id: \.name) { classInfo in
+                        ForEach(Array(userSchedule.cycle[indexDay-1].schedule.enumerated()), id: \.element.name) { index, classInfo in
                             let randomColor = rainbowColors.randomElement()
+                            let (startTime, endTime) = calculateClassTimes(for: index)
+                            
                             ZStack {
                                 randomColor
                                     .cornerRadius(8)
-                                Text("\(classInfo.name) - \(classInfo.teacher)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.white)
-                                    .padding()
+                                HStack(
+                                    content: {
+                                        VStack(alignment: .leading, content: {
+                                        Text("\(classInfo.name)")
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                            if classInfo.teacher != "N/A" {
+                                                Text("\(classInfo.teacher)")
+                                                .font(.subheadline)
+                                                .foregroundColor(.white)
+                                            }
+                                    })
+                                    Spacer()
+                                        VStack( alignment: .trailing,
+                                        content: {
+                                        Text("\(startTime)")
+                                        Text("\(endTime)")
+                                    })
+                                })
+                                .padding(EdgeInsets(top: 0,leading: 16, bottom: 0, trailing: 16))
                             }
                             .frame(width: 360, height: 60)
+                            .swipeActions(edge: .trailing) {
+                                Button(role: .destructive) {
+                                    // Action for deleting the item
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                                Button {
+                                    // Another action, e.g., editing the item
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.blue)}
                         }
                     } else {
                         Text("User Schedule not found.")
@@ -83,10 +109,10 @@ struct ContentView3: View {
                             .padding()
                     }
                     Spacer()
-                    
                 }
                 .padding(16)
             }
+            
             .gesture(
                 DragGesture()
                     .onEnded { value in
@@ -99,8 +125,29 @@ struct ContentView3: View {
                         }
                     }
             )
+            
+            
         }}
+    
+    // get times for the boxes
+    func calculateClassTimes(for index: Int) -> (String, String) {
+            let startHour = 8 // 8 AM
+            let startTime = startHour + index // Each class starts 1 hour after the previous one
+            let endTime = startTime + (55 / 60) // End time is 55 minutes after start time
 
+            let startHourFormatted = startTime % 12 == 0 ? 12 : startTime % 12 // Adjust for 12-hour format
+            let startPeriod = startTime < 12 || startTime == 24 ? "AM" : "PM" // Determine AM/PM
+            
+            let endHourFormatted = endTime % 12 == 0 ? 12 : endTime % 12 // Adjust for 12-hour format
+            let endPeriod = endTime < 12 || endTime == 24 ? "AM" : "PM" // Determine AM/PM
+
+            let startTimeString = String(format: "%d:00 %@", startHourFormatted, startPeriod)
+            let endTimeString = String(format: "%d:55 %@", endHourFormatted, endPeriod)
+
+            return (startTimeString, endTimeString)
+        }
+    
+    // change screen as swipe
     private func changeValue(increase: Bool) {
         if increase {
             number += 1
@@ -110,15 +157,19 @@ struct ContentView3: View {
             currentDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate) ?? Date()
         }
 
-        backgroundColor = number % 2 == 0 ? Color.green : Color.blue // Change color based on number
+        /*backgroundColor = number % 2 == 0 ? Color.green : Color.blue*/ // Change color based on number
+        // dont chaneg color
+        backgroundColor = Color.black
     }
 
+    // format day to may 23, 2024
     private func formattedDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, yyyy"
         return dateFormatter.string(from: date)
     }
 
+    // format day to thursday
     private func formattedWeekday(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
