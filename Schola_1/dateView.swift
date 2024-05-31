@@ -59,12 +59,13 @@ struct ContentView3: View {
 //                        .font(.system(size: 100, weight: .bold, design: .default))
 //                        .foregroundColor(.white)
 //                        .padding()
-                    let schoolToday = true
                     if Calendar.current.isDateInWeekend(currentDate){
-                        let schoolToday = false
                         Spacer()
-                        Text("no school today")
-                            .font(.headline)
+                        Text("no school today,")
+                            .font(.system(size: 32, weight: .bold))
+                            .foregroundColor(.white)
+                        Text("get to studying!")
+                            .font(.system(size: 24, weight: .semibold))
                             .foregroundColor(.white)
                         Spacer()
                     } else {
