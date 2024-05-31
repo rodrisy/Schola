@@ -4,7 +4,8 @@ struct ContentView3: View {
     @State private var currentDate = Date()
     @State private var number = 0
     @State private var backgroundColor = Color.black
-    let rainbowColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple]
+    
+    let rainbowColors: [Color] = [.red, .orange, .yellow, .green, .mint, .teal, .cyan, .blue, .indigo, .purple, .pink, .brown]
 //    let schedules = dwightschedules.first(where: { $0.scheduleName == "11grade" })
     
     
@@ -58,57 +59,68 @@ struct ContentView3: View {
 //                        .font(.system(size: 100, weight: .bold, design: .default))
 //                        .foregroundColor(.white)
 //                        .padding()
-                    
-                    if let userSchedule = userSchedule {
-                        // Display the user schedule details
-                        ForEach(Array(userSchedule.cycle[indexDay-1].schedule.enumerated()), id: \.element.name) { index, classInfo in
-                            let randomColor = rainbowColors.randomElement()
-                            let (startTime, endTime) = calculateClassTimes(for: index)
-                            
-                            ZStack {
-                                randomColor
-                                    .cornerRadius(8)
-                                HStack(
-                                    content: {
-                                        VStack(alignment: .leading, content: {
-                                        Text("\(classInfo.name)")
-                                            .font(.headline)
-                                            .foregroundColor(.white)
-                                            if classInfo.teacher != "N/A" {
-                                                Text("\(classInfo.teacher)")
-                                                .font(.subheadline)
-                                                .foregroundColor(.white)
-                                            }
-                                    })
-                                    Spacer()
-                                        VStack( alignment: .trailing,
-                                        content: {
-                                        Text("\(startTime)")
-                                        Text("\(endTime)")
-                                    })
-                                })
-                                .padding(EdgeInsets(top: 0,leading: 16, bottom: 0, trailing: 16))
-                            }
-                            .frame(width: 360, height: 60)
-                            .swipeActions(edge: .trailing) {
-                                Button(role: .destructive) {
-                                    // Action for deleting the item
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                                Button {
-                                    // Another action, e.g., editing the item
-                                } label: {
-                                    Label("Edit", systemImage: "pencil")
-                                }
-                                .tint(.blue)}
-                        }
+                    let schoolToday = true
+                    if Calendar.current.isDateInWeekend(currentDate){
+                        let schoolToday = false
+                        Spacer()
+                        Text("no school today")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        Spacer()
                     } else {
-                        Text("User Schedule not found.")
-                            .font(.title)
-                            .padding()
+                        
+                        if let userSchedule = userSchedule {
+                            // Display the user schedule details
+                            ForEach(Array(userSchedule.cycle[indexDay-1].schedule.enumerated()), id: \.element.name) { index, classInfo in
+                                let randomColor = rainbowColors.randomElement()
+                                let (startTime, endTime) = calculateClassTimes(for: index)
+                                
+                                ZStack {
+                                    randomColor
+                                        .cornerRadius(8)
+                                    HStack(
+                                        content: {
+                                            VStack(alignment: .leading, content: {
+                                            Text("\(classInfo.name)")
+                                                .font(.headline)
+                                                .foregroundColor(.white)
+                                                if classInfo.teacher != "N/A" {
+                                                    Text("\(classInfo.teacher)")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.white)
+                                                }
+                                        })
+                                        Spacer()
+                                            VStack( alignment: .trailing,
+                                            content: {
+                                            Text("\(startTime)")
+                                            Text("\(endTime)")
+                                        })
+                                    })
+                                    .padding(EdgeInsets(top: 0,leading: 16, bottom: 0, trailing: 16))
+                                }
+                                .frame(width: 360, height: 60)
+                                .swipeActions(edge: .trailing) {
+                                    Button(role: .destructive) {
+                                        // Action for deleting the item
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                    Button {
+                                        // Another action, e.g., editing the item
+                                    } label: {
+                                        Label("Edit", systemImage: "pencil")
+                                    }
+                                    .tint(.blue)}
+                            }
+                        } else {
+                            Text("User Schedule not found.")
+                                .font(.title)
+                                .padding()
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    
                 }
                 .padding(16)
             }
