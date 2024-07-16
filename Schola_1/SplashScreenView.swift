@@ -17,9 +17,17 @@ struct SplashScreenView: View {
             VStack{
                 Image("schola_elephant copy")
                             .resizable()
-                            .frame(width: 200, height: 200) // Adjust the width and height as needed
+                            .frame(width: 100, height: 100) // Adjust the width and height as needed
                 Spacer().frame(height: 0)
                 Text("Schola").font(.largeTitle.bold())
+            }
+            .scaleEffect(size)
+            .opacity(opacity)
+            .onAppear{
+                withAnimation(.easeIn(duration: 1.2)) {
+                    self.size = 0.9
+                    self.opacity = 1.0
+                }
             }
         }
     }
