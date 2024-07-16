@@ -15,7 +15,10 @@ struct SplashScreenView: View {
     var body: some View {
         VStack{
             VStack{
-                Image(uiImage: UIImage(named: "schola_elephant copy") ?? UIImage()).font(.system(size:0.5))
+                Image("schola_elephant copy")
+                            .resizable()
+                            .frame(width: 200, height: 200) // Adjust the width and height as needed
+                Spacer().frame(height: 0)
                 Text("Schola")
             }
         }
