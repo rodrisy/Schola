@@ -19,7 +19,7 @@ struct SplashScreenView: View {
                             .resizable()
                             .frame(width: 200, height: 200) // Adjust the width and height as needed
                 Spacer().frame(height: 0)
-                Text("Schola")
+                Text("Schola").font(.largeTitle.bold())
             }
         }
     }
