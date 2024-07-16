@@ -11,7 +11,7 @@ import SwiftUI
 struct Schola_1App: App {
     var body: some Scene {
         WindowGroup {
-            SplashScreenView()
+            SplashScreenView().background(.white)
             
         }
     }

@@ -2,9 +2,7 @@ import SwiftUI
 import UIKit
 
 struct LoginView: View {
-
     
-    @State private var backgroundColor = Color(UIColor.systemGray5) // Change the background color here
     @State private var username = ""
     @State private var wrongUsername = 0
     @State private var showingLoginScreen = false
