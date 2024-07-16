@@ -11,6 +11,7 @@
 		551562752BC95BF8003F371E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551562742BC95BF8003F371E /* Preview Assets.xcassets */; };
 		552FCA842BE47FB200D52F90 /* G11Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552FCA832BE47FB200D52F90 /* G11Model.swift */; };
 		552FCA862BE4834000D52F90 /* gptwaffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552FCA852BE4834000D52F90 /* gptwaffle.swift */; };
+		55443D7A2C46E79C005E626D /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55443D792C46E79C005E626D /* SplashScreenView.swift */; };
 		5591F3AA2BE1575C00F74741 /* Schola_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515626D2BC95BF7003F371E /* Schola_1App.swift */; };
 		55B867C22BE12DB60006CCA3 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AF51F2BDD32F7005D94E3 /* loginView.swift */; };
 		55B867C32BE12DC80006CCA3 /* dateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F7B4F2BD96B72007E6B27 /* dateView.swift */; };
@@ -29,6 +30,7 @@
 		552AF51F2BDD32F7005D94E3 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		552FCA832BE47FB200D52F90 /* G11Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = G11Model.swift; sourceTree = "<group>"; };
 		552FCA852BE4834000D52F90 /* gptwaffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gptwaffle.swift; sourceTree = "<group>"; };
+		55443D792C46E79C005E626D /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				5515627B2BC95E94003F371E /* screens */,
 				552FCA832BE47FB200D52F90 /* G11Model.swift */,
 				550F7B4F2BD96B72007E6B27 /* dateView.swift */,
+				55443D792C46E79C005E626D /* SplashScreenView.swift */,
 				552AF51F2BDD32F7005D94E3 /* loginView.swift */,
 				5515626D2BC95BF7003F371E /* Schola_1App.swift */,
 				551562712BC95BF8003F371E /* Assets.xcassets */,
@@ -175,6 +178,7 @@
 				55B867CE2BE150610006CCA3 /* FormatDateUtil.swift in Sources */,
 				5591F3AA2BE1575C00F74741 /* Schola_1App.swift in Sources */,
 				552FCA842BE47FB200D52F90 /* G11Model.swift in Sources */,
+				55443D7A2C46E79C005E626D /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
