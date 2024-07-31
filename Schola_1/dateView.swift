@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView3: View {
     @State private var currentDate = Date()
     @State private var number = 0
-    @State private var backgroundColor = Color.black
+    //@State private var backgroundColor = Color.black
     
     let rainbowColors: [Color] = [.red, .orange, .yellow, .green, .mint, .teal, .cyan, .blue, .indigo, .purple, .pink, .brown]
 //    let schedules = dwightschedules.first(where: { $0.scheduleName == "11grade" })
@@ -25,7 +25,7 @@ struct ContentView3: View {
     var body: some View {
         NavigationView {
             ZStack {
-                backgroundColor.edgesIgnoringSafeArea(.all)
+                //backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     // page index
 //                    Text("\(number)")
@@ -37,23 +37,12 @@ struct ContentView3: View {
                     HStack(alignment: .bottom, content: {
                         Text("\(formattedWeekday(date: currentDate))")
                             .font(.system(size: 34, weight: .bold))
-                            .foregroundColor(.white)
                         Spacer()
                         Text("\(formattedDate(date: currentDate))")
                             .font(.system(size: 19, weight: .semibold))
-                            .foregroundColor(.white)
                     })
                     
-//                    Text("\(formattedDate(date: currentDate))")
-//                        .font(.title)
-//                        .foregroundColor(.white)
-//                        .padding()
-//                    // current day EEEE
-//                    Text("\(formattedWeekday(date: currentDate))")
-//                        .font(.title)
-//                        .foregroundColor(.white)
-//                        .padding()
-                    // dayIndex
+
                     let indexDay = calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: [])
 //                    Text("\(calculateCycleDay(currentDate: currentDate, cycleDays: 6, vacationDays: []))")
 //                        .font(.system(size: 100, weight: .bold, design: .default))
@@ -63,58 +52,61 @@ struct ContentView3: View {
                         Spacer()
                         Text("no school today,")
                             .font(.system(size: 32, weight: .bold))
-                            .foregroundColor(.white)
+                       //     .foregroundColor(.white)
                         Text("get to studying!")
                             .font(.system(size: 24, weight: .semibold))
-                            .foregroundColor(.white)
+                      //      .foregroundColor(.white)
                         Spacer()
                     } else {
                         
                         if let userSchedule = userSchedule {
                             // Display the user schedule details
-                            ForEach(Array(userSchedule.cycle[indexDay-1].schedule.enumerated()), id: \.element.name) { index, classInfo in
-                                let randomColor = rainbowColors.randomElement()
-                                let (startTime, endTime) = calculateClassTimes(for: index)
-                                
-                                ZStack {
-                                    randomColor
-                                        .cornerRadius(8)
-                                    HStack(
-                                        content: {
-                                            VStack(alignment: .leading, content: {
-                                            Text("\(classInfo.name)")
-                                                .font(.headline)
-                                                .foregroundColor(.white)
-                                                if classInfo.teacher != "N/A" {
-                                                    Text("\(classInfo.teacher)")
-                                                    .font(.subheadline)
-                                                    .foregroundColor(.white)
-                                                }
-                                        })
-                                        Spacer()
-                                            VStack( alignment: .trailing,
+                            // Scroll thing
+                            ScrollView{
+                                ForEach(Array(userSchedule.cycle[indexDay-1].schedule.enumerated()), id: \.element.name) { index, classInfo in
+                                    let randomColor = rainbowColors.randomElement()
+                                    let (startTime, endTime) = calculateClassTimes(for: index)
+                                    
+                                    ZStack {
+                                        randomColor
+                                            .cornerRadius(8)
+                                        HStack(
                                             content: {
-                                            Text("\(startTime)")
-                                            Text("\(endTime)")
-                                        })
-                                    })
-                                    .padding(EdgeInsets(top: 0,leading: 16, bottom: 0, trailing: 16))
+                                                VStack(alignment: .leading, content: {
+                                                    Text("\(classInfo.name)")
+                                                        .font(.headline)
+                                                        .foregroundColor(.white)
+                                                    if classInfo.teacher != "N/A" {
+                                                        Text("\(classInfo.teacher)")
+                                                            .font(.subheadline)
+                                                            .foregroundColor(.white)
+                                                    }
+                                                })
+                                                Spacer()
+                                                VStack( alignment: .trailing,
+                                                        content: {
+                                                    Text("\(startTime)")
+                                                    Text("\(endTime)")
+                                                })
+                                            })
+                                        .padding(EdgeInsets(top: 0,leading: 16, bottom: 0, trailing: 16))
+                                    }
+                                    .frame(width: 360, height: 80)
+                                    .swipeActions(edge: .trailing) {
+                                        Button(role: .destructive) {
+                                            // Action for deleting the item
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                        Button {
+                                            // Another action, e.g., editing the item
+                                        } label: {
+                                            Label("Edit", systemImage: "pencil")
+                                        }
+                                        .tint(.blue)}
                                 }
-                                .frame(width: 360, height: 60)
-                                .swipeActions(edge: .trailing) {
-                                    Button(role: .destructive) {
-                                        // Action for deleting the item
-                                    } label: {
-                                        Label("Delete", systemImage: "trash")
-                                    }
-                                    Button {
-                                        // Another action, e.g., editing the item
-                                    } label: {
-                                        Label("Edit", systemImage: "pencil")
-                                    }
-                                    .tint(.blue)}
                             }
-                        } else {
+                            } else {
                             Text("User Schedule not found.")
                                 .font(.title)
                                 .padding()
@@ -172,7 +164,7 @@ struct ContentView3: View {
 
         /*backgroundColor = number % 2 == 0 ? Color.green : Color.blue*/ // Change color based on number
         // dont chaneg color
-        backgroundColor = Color.black
+        //backgroundColor = Color.black
     }
 
     // format day to may 23, 2024
